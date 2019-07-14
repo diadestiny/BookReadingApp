@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BottomTabber</string>
+    <string name="action_settings">Settings</string>
+    <string name="tab_menu_alert">书城</string>
+    <string name="tab_menu_profile">书架</string>
+    <string name="tab_menu_pay">我的</string>
+    <string name="tab_menu_setting">设置</string>
+</resources>
