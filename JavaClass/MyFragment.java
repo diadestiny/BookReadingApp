@@ -2,9 +2,8 @@ package com.example.bottomtabber;
 
 import android.annotation.SuppressLint;
 
-import android.app.Fragment;
 import android.os.Bundle;
-
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,8 @@ import android.widget.TextView;
 @SuppressLint("ValidFragment")
 public class MyFragment extends Fragment {
     private String content;
-    @SuppressLint("ValidFragment")
+
+
     public MyFragment(String content){
         this.content = content;
     }
