@@ -3,7 +3,7 @@
 
 * Viewager,fragment 实现主界面滑动和底部导航栏
 * 用litepal快速实现登录，注册，修改密码的界面功能
-* 用~~GridView~~RecyclerViewl在书架进行展示
+* 用~~GridView~~RecyclerView在书架进行展示
 
 ## 采坑点
 
