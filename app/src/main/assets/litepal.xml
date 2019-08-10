@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<litepal>
+
+    <dbname value="BookBao" />
+    <version value="8" />
+
+    <list>
+        <mapping class="com.example.bottomtabber.Data.User"></mapping>
+        <mapping class="com.example.bottomtabber.Data.Book"></mapping>
+        <mapping class="com.example.bottomtabber.Data.Temp"></mapping>
+    </list>
+
+
+
+</litepal>
