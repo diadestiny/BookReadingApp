@@ -69,7 +69,7 @@ public class BookSheetAdapter extends RecyclerView.Adapter<BookSheetAdapter.View
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iv;
         TextView tv;
-        public ViewHolder( View itemView) {
+         ViewHolder( View itemView) {
             super(itemView);
             iv =itemView.findViewById(R.id.ItemImage);
             tv = itemView.findViewById(R.id.ItemText);

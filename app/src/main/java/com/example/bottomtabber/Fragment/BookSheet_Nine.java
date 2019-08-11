@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.bottomtabber.Activity.AddBook;
 import com.example.bottomtabber.Activity.Login;
+import com.example.bottomtabber.Activity.Main;
 import com.example.bottomtabber.Activity.search_show;
 import com.example.bottomtabber.Control.OnItemClickListener;
 import com.example.bottomtabber.Control.BookSheetAdapter;
@@ -28,6 +30,8 @@ import org.litepal.LitePal;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.bottomtabber.Activity.Main.PAGE_THREE;
 
 public class BookSheet_Nine extends Fragment {
 
@@ -87,7 +91,6 @@ public class BookSheet_Nine extends Fragment {
                     b.save();
                     Toast.makeText(getContext(), "您点击了" + position +"  "+b.getSum(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
@@ -144,7 +147,12 @@ public class BookSheet_Nine extends Fragment {
             case 2:
                 allBooks = LitePal.where("user_name=?", Login.loginUser.getUsername()).order("id desc").find(Book.class);
                 break;
+            case 3:
+                allBooks = LitePal.where("user_name=?", Login.loginUser.getUsername()).order("sum desc").find(Book.class);
+                break;
+
         }
     }
+
 
 }

@@ -1,8 +1,10 @@
 package com.example.bottomtabber.Control;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
 
 import com.example.bottomtabber.Fragment.BookSheet_Nine;
 import com.example.bottomtabber.Fragment.Category;
@@ -16,6 +18,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     private BookSheet_Nine bookSheet;
     private Home home;
     private Category category;
+
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
         fg1=new MyFragment("书城");
@@ -48,4 +51,6 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return PAGER_COUNT;
     }
+
+
 }

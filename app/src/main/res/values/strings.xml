@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">书宝</string>
     <string name="action_settings">Settings</string>
+
     <string name="tab_menu_bookCity">书城</string>
     <string name="tab_menu_bookSheet">书架</string>
-    <string name="tab_menu_category">分类</string>
+    <string name="tab_menu_category">统计</string>
     <string name="tab_menu_my">我的</string>
     <string name="hello_book_sheet">我的书架</string>
     <string name="list">书架排列</string>

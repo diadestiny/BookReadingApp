@@ -25,21 +25,20 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
     private TextView txt_message;
     private TextView txt_better;
     private TextView txt_setting;
-    private ViewPager viewPager;
+    public  ViewPager viewPager;
     private MyFragmentPagerAdapter mAdapter;
 
     public static final int PAGE_ONE = 0;
     public static final int PAGE_TWO = 1;
     public static final int PAGE_THREE = 2;
     public static final int PAGE_FOUR = 3;
-    private Toolbar toolbar;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         initUI();
@@ -85,18 +84,23 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
                         @Override
                         public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
                             PagerAdapter f = viewPager.getAdapter();
-                            BookSheet_Nine bookSheet_nine= (BookSheet_Nine)f.instantiateItem(viewPager,PAGE_TWO);
-                            switch (which){
-                                case 0:
-                                    bookSheet_nine.initData(true,1);
-                                    bookSheet_nine.initView();
-                                    break;
-                                case 1:
-                                    bookSheet_nine.initData(true,2);
-                                    bookSheet_nine.initView();
-                                    break;
+                            if(f!=null){
+                                BookSheet_Nine bookSheet_nine= (BookSheet_Nine)f.instantiateItem(viewPager,PAGE_TWO);
+                                switch (which){
+                                    case 0:
+                                        bookSheet_nine.initData(true,1);
+                                        bookSheet_nine.initView();
+                                        break;
+                                    case 1:
+                                        bookSheet_nine.initData(true,2);
+                                        bookSheet_nine.initView();
+                                        break;
+                                    case 2:
+                                        bookSheet_nine.initData(true,3);
+                                        bookSheet_nine.initView();
+                                        break;
+                                }
                             }
-
                             return true;
                         }
                     })
@@ -135,12 +139,12 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
     }
 
     @Override
-    public void onPageScrolled(int i, float v, int i1) {
+    public void onPageSelected(int i) {
 
     }
 
     @Override
-    public void onPageSelected(int i) {
+    public void onPageScrolled(int i, float v, int i1) {
 
     }
 
@@ -169,4 +173,5 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
             }
         }
     }
+
 }
