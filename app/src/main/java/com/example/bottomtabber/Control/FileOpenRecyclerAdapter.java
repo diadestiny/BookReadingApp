@@ -42,6 +42,7 @@ public class FileOpenRecyclerAdapter extends RecyclerView.Adapter<FileOpenRecycl
                     public void onConfirmButtonClick() {
                         Book book = new Book(R.mipmap.book1,name, Login.loginUser.getUsername());
                         if(LitePal.where("user_name=? and name =?", Login.loginUser.getUsername(),name).find(Book.class).isEmpty()){
+                            book.setPath(list.get(position).getAbsolutePath());
                             book.save();
                             Toast.makeText(view.getContext(), name + "成功加入书架", Toast.LENGTH_SHORT).show();
                         }else{
@@ -62,8 +63,10 @@ public class FileOpenRecyclerAdapter extends RecyclerView.Adapter<FileOpenRecycl
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String text = list.get(position).getName();
-        holder.name.setText(text);
+        String nametext = list.get(position).getName();
+        String pathtext = list.get(position).getAbsolutePath();
+        holder.name.setText(nametext);
+        holder.path.setText(pathtext);
     }
 
     @Override
@@ -73,11 +76,13 @@ public class FileOpenRecyclerAdapter extends RecyclerView.Adapter<FileOpenRecycl
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
+        TextView path;
         View view;
         public ViewHolder(View itemView) {
             super(itemView);
             view=itemView;
             name = itemView.findViewById(R.id.file_name);
+            path = itemView.findViewById(R.id.file_path);
         }
     }
 }

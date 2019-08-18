@@ -9,7 +9,9 @@ public class Book extends LitePalSupport {
     private String name;//书名
     private String user_name;//用户名字
     private String category;//种类
-    private int sum;
+    private int sum;//阅读次数
+    private String path;//路径
+    private String bookContent="NoContent";//内容
 
     public Book(int bitmapId, String name, String user_name) {
         this.bitmapId = bitmapId;
@@ -61,6 +63,22 @@ public class Book extends LitePalSupport {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getBookContent() {
+        return bookContent;
+    }
+
+    public void setBookContent(String bookContent) {
+        this.bookContent = bookContent;
     }
 
     @Override

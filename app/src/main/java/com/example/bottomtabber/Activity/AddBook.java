@@ -2,6 +2,7 @@ package com.example.bottomtabber.Activity;
 
 
 import android.os.Environment;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bottomtabber.Control.FileOpenRecyclerAdapter;
 import com.example.bottomtabber.Fragment.BookSheet_Nine;
@@ -19,6 +21,7 @@ import com.example.bottomtabber.Util.FileUtil;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddBook extends AppCompatActivity {
 
@@ -56,8 +59,11 @@ public class AddBook extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Looper.prepare();//增加部分
                     if(BookSheet_Nine.putFlag==0){
                         list = (ArrayList<File>) FileUtil.getSuffixFile(new ArrayList<File>(), String.valueOf(Environment.getExternalStorageDirectory()), ".txt");
+
+                        Toast.makeText(getApplicationContext(),"智能扫描到"+list.size()+"个txt文本(已过滤小文本)",Toast.LENGTH_SHORT).show();
                         BookSheet_Nine.putFlag=1;
                         BookSheet_Nine.putBooks=(ArrayList<File>) list.clone();
                     }
@@ -70,6 +76,7 @@ public class AddBook extends AppCompatActivity {
                             initView();
                         }
                    });
+                    Looper.loop();
                 }
         }).start();
     }

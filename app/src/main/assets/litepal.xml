@@ -8,7 +8,6 @@
     <list>
         <mapping class="com.example.bottomtabber.Data.User"></mapping>
         <mapping class="com.example.bottomtabber.Data.Book"></mapping>
-        <mapping class="com.example.bottomtabber.Data.Temp"></mapping>
     </list>
 
 

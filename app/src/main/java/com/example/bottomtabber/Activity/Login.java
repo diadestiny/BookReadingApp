@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bottomtabber.Data.Temp;
 import com.example.bottomtabber.Data.User;
 import com.example.bottomtabber.R;
 

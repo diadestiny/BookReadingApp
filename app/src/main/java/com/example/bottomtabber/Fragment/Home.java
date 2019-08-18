@@ -241,7 +241,7 @@ public class Home extends Fragment implements View.OnClickListener {
                 new MaterialDialog.Builder(getContext())
                         .title("邮箱设置")
                         //限制输入的长度
-                        .inputRangeRes(8, 16, R.color.colorPrimary)
+                        .inputRangeRes(8, 25, R.color.colorPrimary)
                         //限制输入类型
                         .inputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS)
                         .input("请输入您的邮箱", null, new MaterialDialog.InputCallback() {

@@ -29,8 +29,6 @@ public class Category extends Fragment {
     private View view;
     private List<Book> allBooks;
 
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,7 +81,6 @@ public class Category extends Fragment {
         xAxis.setGranularity(1f);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
-        xAxis.setLabelCount(7);
         xAxis.setTextSize(2f);
         xAxis.setLabelRotationAngle(-40);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xValue));//设置x轴标签格式化器

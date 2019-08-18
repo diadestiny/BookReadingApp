@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import com.example.bottomtabber.Activity.AddBook;
 import com.example.bottomtabber.Activity.Login;
 import com.example.bottomtabber.Activity.Main;
+import com.example.bottomtabber.Activity.ShowBook;
 import com.example.bottomtabber.Activity.search_show;
 import com.example.bottomtabber.Control.OnItemClickListener;
 import com.example.bottomtabber.Control.BookSheetAdapter;
@@ -89,7 +89,10 @@ public class BookSheet_Nine extends Fragment {
                             .find(Book.class).get(0);
                     b.setSum(b.getSum()+1);
                     b.save();
-                    Toast.makeText(getContext(), "您点击了" + position +"  "+b.getSum(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "您点击了" + position +"  "+b.getSum(), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getActivity(), ShowBook.class);
+                    i.putExtra("filepath",b.getPath());
+                    startActivity(i);
                 }
             }
 

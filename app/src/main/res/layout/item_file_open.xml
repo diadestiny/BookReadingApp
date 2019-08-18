@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="90dp">
 
     <ImageView
         android:id="@+id/file_image"
@@ -12,11 +12,30 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/file_name"
-        android:text="文字"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/file_name"
+            android:text="word"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/file_path"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="path"
+            android:textSize="15dp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
