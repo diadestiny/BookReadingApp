@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_topbar"
-    android:id="@+id/ll_content">
+    >
 
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="暂未开放，敬请期待~~~"
-       android:textSize="30sp"/>
+  <android.support.v7.widget.SearchView
+      android:id="@+id/searchView"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      />
 
-</LinearLayout>
+   <android.support.v7.widget.RecyclerView
+       android:layout_below="@+id/searchView"
+       android:id="@+id/recycler"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+   </android.support.v7.widget.RecyclerView>
+    <ProgressBar
+
+        android:id="@+id/progressbar1"
+        android:layout_centerVertical="true"
+        android:layout_width="80dp"
+        android:layout_height="50dp">
+    </ProgressBar>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/progressbar1"
+        android:text="书籍正在加载~~~请耐心等候~~~"
+        android:id="@+id/textcity"
+        android:textSize="20sp"
+        android:textColor="#ff6699"
+        android:textStyle="italic"
+        android:gravity="center_vertical"/>
+</RelativeLayout>

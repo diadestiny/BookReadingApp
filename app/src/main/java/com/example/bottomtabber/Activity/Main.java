@@ -1,5 +1,7 @@
 package com.example.bottomtabber.Activity;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.support.v4.view.PagerAdapter;
@@ -16,6 +18,13 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.bottomtabber.Control.MyFragmentPagerAdapter;
 import com.example.bottomtabber.Fragment.BookSheet_Nine;
 import com.example.bottomtabber.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.zia.easybookmodule.bean.Book;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 
@@ -33,11 +42,22 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
     public static final int PAGE_THREE = 2;
     public static final int PAGE_FOUR = 3;
 
+    public static List<Book> lists = null;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sp1 = getSharedPreferences("BOOK_LIST", Activity.MODE_PRIVATE);
+        String listJson = sp1.getString("KEY_BOOK_DATA","");
+        if(!listJson.equals("")){
+            Gson gson = new Gson();
+           lists = gson.fromJson(listJson,new TypeToken<List<Book>>(){}.getType());
+        }else {
+            lists = new ArrayList<>();
+        }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
@@ -46,8 +66,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
 
     private void initUI() {
         txt_channel = findViewById(R.id.txt_channel);
-        txt_message = findViewById(R.id.txt_message);
         txt_better  = findViewById(R.id.txt_better);
+        txt_message = findViewById(R.id.txt_message);
         txt_setting = findViewById(R.id.txt_setting);
         viewPager   = findViewById(R.id.ly_content);
 
@@ -55,15 +75,15 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
         viewPager.setCurrentItem(0);
         viewPager.addOnPageChangeListener(this);
         txt_channel.setOnClickListener(this);
-        txt_message.setOnClickListener(this);
         txt_better.setOnClickListener(this);
+        txt_message.setOnClickListener(this);
         txt_setting.setOnClickListener(this);
     }
     //重置所有文本的选中状态
     private void setSelected(){
         txt_channel.setSelected(false);
-        txt_message.setSelected(false);
         txt_better.setSelected(false);
+        txt_message.setSelected(false);
         txt_setting.setSelected(false);
     }
 
@@ -119,16 +139,16 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
                 txt_channel.setSelected(true);
                 viewPager.setCurrentItem(PAGE_ONE);
                 break;
-            case R.id.txt_message:
-                setSelected();
-                txt_message.setSelected(true);
-                viewPager.setCurrentItem(PAGE_TWO);
-                break;
             case R.id.txt_better:
                 setSelected();
                 txt_better.setSelected(true);
-                viewPager.setCurrentItem(PAGE_THREE);
+                viewPager.setCurrentItem(PAGE_TWO);
                 break;
+            case R.id.txt_message:
+                setSelected();
+                txt_message.setSelected(true);
+                viewPager.setCurrentItem(PAGE_THREE);
+            break;
             case R.id.txt_setting:
                 setSelected();
                 txt_setting.setSelected(true);
@@ -159,11 +179,11 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
                     break;
                 case PAGE_TWO:
                     setSelected();
-                    txt_message.setSelected(true);
+                    txt_better.setSelected(true);
                     break;
                 case PAGE_THREE:
                     setSelected();
-                    txt_better.setSelected(true);
+                    txt_message.setSelected(true);
                     break;
                 case PAGE_FOUR:
                     setSelected();
@@ -173,5 +193,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
             }
         }
     }
+
 
 }

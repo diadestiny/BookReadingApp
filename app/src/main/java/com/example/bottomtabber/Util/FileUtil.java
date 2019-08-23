@@ -19,15 +19,14 @@ public class FileUtil {
             return null;
         }
         File[] subFiles = f.listFiles();
-
+        if(files.size()>50){
+            return files;
+        }
         if(subFiles == null){
             return null;
         }
-        if(files.size()>100){
-            return files;
-        }
         for(File subFile:subFiles){
-            if(subFile.isFile() && subFile.getName().endsWith(suffere) && subFile.length()/1024>5){
+            if(subFile.isFile() && subFile.getName().endsWith(suffere) && subFile.length()/1024<1000 &&  subFile.length()/1024>2){
                 files.add(subFile);
                 Log.d("lkh",subFile.length()/1024+"kb");
             }else if(subFile.isDirectory()){
@@ -134,9 +133,12 @@ public class FileUtil {
             FileInputStream inputStream = new FileInputStream(file.getAbsoluteFile());
             String charset = FileUtil.getCharset(file.getAbsolutePath());
             Scanner sc = new Scanner(inputStream,charset);
+            int i=0;
             while (sc.hasNextLine()){
                 String line = sc.nextLine();
                 content= content+line+"\n";
+                i++;
+                Log.d("lkh",i+"次数");
             }
             content = content.replaceAll("\\n","\n");
             if(sc.ioException() != null) {

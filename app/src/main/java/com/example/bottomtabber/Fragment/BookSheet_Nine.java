@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.bottomtabber.Activity.AddBook;
 import com.example.bottomtabber.Activity.Login;
 import com.example.bottomtabber.Activity.Main;
 import com.example.bottomtabber.Activity.ShowBook;
+import com.example.bottomtabber.Activity.ShowBookChapter;
 import com.example.bottomtabber.Activity.search_show;
 import com.example.bottomtabber.Control.OnItemClickListener;
 import com.example.bottomtabber.Control.BookSheetAdapter;
@@ -25,19 +27,18 @@ import com.example.bottomtabber.Data.Book;
 import com.example.bottomtabber.R;
 import com.example.bottomtabber.Util.DialogUtils;
 
-import org.litepal.LitePal;
 
+import org.litepal.LitePal;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.bottomtabber.Activity.Main.PAGE_THREE;
 
 public class BookSheet_Nine extends Fragment {
 
     public static int putFlag=0;
     public static ArrayList<File> putBooks=null;
-
+    public static com.zia.easybookmodule.bean.Book putbook;
     private View view;
     private List<Book> allBooks;
     private int status=0;
@@ -82,17 +83,24 @@ public class BookSheet_Nine extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 if(position==allBooks.size()-1){
-                    Intent intent = new Intent(getActivity(), AddBook.class);
-                    startActivity(intent);
+                   Intent intent = new Intent(getActivity(), AddBook.class);
+                   startActivity(intent);
                 }else{
-                    Book b =LitePal.where("user_name=? and name=?", Login.loginUser.getUsername(),allBooks.get(position).getName())
-                            .find(Book.class).get(0);
-                    b.setSum(b.getSum()+1);
-                    b.save();
-                    //Toast.makeText(getContext(), "您点击了" + position +"  "+b.getSum(), Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getActivity(), ShowBook.class);
-                    i.putExtra("filepath",b.getPath());
-                    startActivity(i);
+                    if (allBooks.get(position).getPath().equals("noPath")){
+                        putbook = Main.lists.get(allBooks.get(position).getListNum());
+                        Intent intent = new Intent(getActivity(), ShowBookChapter.class);
+                        intent.putExtra("flagClassNum",2);
+                        startActivity(intent);
+                    }else{
+                        Book b =LitePal.where("user_name=? and name=?", Login.loginUser.getUsername(),allBooks.get(position).getName())
+                                .find(Book.class).get(0);
+                        b.setSum(b.getSum()+1);
+                        b.save();
+                        Intent i = new Intent(getActivity(), ShowBook.class);
+                        i.putExtra("filepath",b.getPath());
+                        startActivity(i);
+                    }
+
                 }
             }
 
@@ -136,6 +144,10 @@ public class BookSheet_Nine extends Fragment {
         Book addBook = new Book(R.mipmap.add,"add");
         if (!allBooks.contains(addBook)){
             allBooks.add(addBook);
+            Log.d("lkh",allBooks.size()+" ");
+            for (Book b:allBooks){
+                Log.d("lkh",b.getName());
+            }
         }
     }
 

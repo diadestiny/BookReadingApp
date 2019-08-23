@@ -5,16 +5,23 @@ import org.litepal.crud.LitePalSupport;
 
 public class Book extends LitePalSupport {
 
-    private int bitmapId;//书图片编号
+    private String imageUrl="noImageUri";
+    private int listNum;//网络书籍保存序号
+    private int bitmapId;//(默认无图)
     private String name;//书名
     private String user_name;//用户名字
-    private String category;//种类
     private int sum;//阅读次数
-    private String path;//路径
+    private String path = "noPath";//路径
     private String bookContent="NoContent";//内容
 
     public Book(int bitmapId, String name, String user_name) {
         this.bitmapId = bitmapId;
+        this.name = name;
+        this.user_name = user_name;
+        this.sum=0;
+    }
+    public Book(String imageUrl, String name, String user_name) {
+        this.imageUrl = imageUrl;
         this.name = name;
         this.user_name = user_name;
         this.sum=0;
@@ -43,13 +50,6 @@ public class Book extends LitePalSupport {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public int getBitmapId() {return bitmapId; }
 
@@ -81,6 +81,22 @@ public class Book extends LitePalSupport {
         this.bookContent = bookContent;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getListNum() {
+        return listNum;
+    }
+
+    public void setListNum(int listNum) {
+        this.listNum = listNum;
+    }
+
     @Override
     public boolean equals( Object obj) {
         if(obj instanceof Book){
@@ -89,4 +105,6 @@ public class Book extends LitePalSupport {
         }
         return super.equals(obj);
     }
+
+
 }

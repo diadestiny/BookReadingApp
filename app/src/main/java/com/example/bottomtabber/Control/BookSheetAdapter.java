@@ -3,12 +3,14 @@ package com.example.bottomtabber.Control;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.bottomtabber.Data.Book;
 import com.example.bottomtabber.R;
 
@@ -38,8 +40,13 @@ public class BookSheetAdapter extends RecyclerView.Adapter<BookSheetAdapter.View
 
     @Override
     public void onBindViewHolder(final BookSheetAdapter.ViewHolder viewHolder, int i) {
-
-        viewHolder.iv.setImageResource(data.get(i).getBitmapId());
+        if (!data.get(i).getImageUrl().equals("noImageUri")){
+            Glide.with(viewHolder.itemView)
+                    .load(data.get(i).getImageUrl())
+                    .into(viewHolder.iv);
+        }else{
+            viewHolder.iv.setImageResource(data.get(i).getBitmapId());
+        }
         viewHolder.tv.setText(data.get(i).getName());
         if(mOnItemClickListener!=null){
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +67,8 @@ public class BookSheetAdapter extends RecyclerView.Adapter<BookSheetAdapter.View
         }
 
     }
-
     @Override
-    public int getItemCount() {
-        return data.size();
-    }
+    public int getItemCount() { return data.size(); }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iv;

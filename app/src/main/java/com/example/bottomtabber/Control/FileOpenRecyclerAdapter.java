@@ -1,6 +1,7 @@
 package com.example.bottomtabber.Control;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +79,7 @@ public class FileOpenRecyclerAdapter extends RecyclerView.Adapter<FileOpenRecycl
         TextView name;
         TextView path;
         View view;
-        public ViewHolder(View itemView) {
+         ViewHolder(View itemView) {
             super(itemView);
             view=itemView;
             name = itemView.findViewById(R.id.file_name);

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bookreadbg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     书籍目录:"
+        android:textSize="30sp"
+        android:textStyle="italic"/>
+    <ListView
+         android:id="@+id/listViewShow"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"/>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:orientation="horizontal">-->
+        <!--<ProgressBar-->
+            <!--android:id="@+id/progress_bar"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="50dp">-->
+        <!--</ProgressBar>-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="书籍初次加载较慢~~~请耐心等候~~~"-->
+            <!--android:id="@+id/text1"-->
+            <!--android:textSize="20sp"-->
+            <!--android:textColor="#ff6699"-->
+            <!--android:textStyle="italic"-->
+            <!--android:gravity="center_vertical"/>-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

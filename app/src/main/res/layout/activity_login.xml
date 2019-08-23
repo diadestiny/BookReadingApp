@@ -16,8 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@mipmap/book3"
-            android:text="书宝"
-            android:textSize="40sp" />
+            android:text="书伴"
+            android:textSize="40sp"
+            android:gravity="center"/>
 
         <EditText
             android:drawableLeft="@mipmap/username"

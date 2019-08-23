@@ -13,16 +13,16 @@ import com.example.bottomtabber.Activity.Main;
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     private final int PAGER_COUNT = 4;
     private BookCity bookCity;
+    private Category category;
     private BookSheet_Nine bookSheet;
     private Home home;
-    private Category category;
 
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
         bookCity=new BookCity();
         category=new Category();
-        home=new Home();
         bookSheet=new BookSheet_Nine();
+        home=new Home();
     }
 
     @Override
@@ -33,10 +33,10 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
                 fragment=bookCity;
                 break;
             case Main.PAGE_TWO:
-                fragment=bookSheet;
+                fragment=category;
                 break;
             case Main.PAGE_THREE:
-                fragment=category;
+                fragment=bookSheet;
                 break;
             case Main.PAGE_FOUR:
                 fragment=home;

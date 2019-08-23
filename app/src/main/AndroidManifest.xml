@@ -16,20 +16,23 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ShowBook"></activity>
-        <activity android:name=".Activity.search_show" />
-        <activity android:name=".Activity.AddBook" />
-        <activity android:name=".Activity.Register" />
-        <activity
-            android:name=".Activity.Main"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.Login">
+        <activity android:name=".Activity.ShowBookInternet"></activity>
+        <activity android:name=".Activity.ShowBookChapter" />
+        <activity android:name=".Activity.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.ShowBook" />
+        <activity android:name=".Activity.search_show" />
+        <activity android:name=".Activity.AddBook" />
+        <activity android:name=".Activity.Register" />
+        <activity
+            android:name=".Activity.Main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.Login" />
     </application>
 
 </manifest>
