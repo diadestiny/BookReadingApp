@@ -86,21 +86,20 @@ public class BookSheet_Nine extends Fragment {
                    Intent intent = new Intent(getActivity(), AddBook.class);
                    startActivity(intent);
                 }else{
+                    Book b =LitePal.where("user_name=? and name=?", Login.loginUser.getUsername(),allBooks.get(position).getName())
+                            .find(Book.class).get(0);
+                    b.setSum(b.getSum()+1);
+                    b.save();
                     if (allBooks.get(position).getPath().equals("noPath")){
                         putbook = Main.lists.get(allBooks.get(position).getListNum());
                         Intent intent = new Intent(getActivity(), ShowBookChapter.class);
                         intent.putExtra("flagClassNum",2);
                         startActivity(intent);
                     }else{
-                        Book b =LitePal.where("user_name=? and name=?", Login.loginUser.getUsername(),allBooks.get(position).getName())
-                                .find(Book.class).get(0);
-                        b.setSum(b.getSum()+1);
-                        b.save();
                         Intent i = new Intent(getActivity(), ShowBook.class);
                         i.putExtra("filepath",b.getPath());
                         startActivity(i);
                     }
-
                 }
             }
 

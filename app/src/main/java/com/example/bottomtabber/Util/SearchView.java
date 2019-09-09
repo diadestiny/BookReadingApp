@@ -1,6 +1,7 @@
 package com.example.bottomtabber.Util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,7 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bottomtabber.Activity.Login;
+import com.example.bottomtabber.Activity.Main;
+import com.example.bottomtabber.Activity.ShowBook;
+import com.example.bottomtabber.Activity.ShowBookChapter;
 import com.example.bottomtabber.Data.Book;
+import com.example.bottomtabber.Fragment.BookSheet_Nine;
 
 import org.litepal.LitePal;
 
@@ -221,10 +226,24 @@ public class SearchView extends LinearLayout {
                 TextView textView = (TextView) view.findViewById(android.R.id.text1);
                 String name = textView.getText().toString();
                 et_search.setText(name);
-                if(!LitePal.where("user_name=? and name =?", Login.loginUser.getUsername(),name).find(Book.class).isEmpty()){
-                    Toast.makeText(view.getContext(), "yes", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(view.getContext(), "no", Toast.LENGTH_SHORT).show();
+                if(!LitePal.where("user_name=? and name =?", Login.loginUser.getUsername(),name).find(Book.class).isEmpty()) {
+                    Book b = LitePal.where("user_name=? and name=?", Login.loginUser.getUsername(), name)
+                            .find(Book.class).get(0);
+                    b.setSum(b.getSum() + 1);
+                    b.save();
+                    if (b.getPath().equals("noPath")) {
+                        BookSheet_Nine.putbook = Main.lists.get(b.getListNum());
+                        Intent intent = new Intent(getContext(), ShowBookChapter.class);
+                        intent.putExtra("flagClassNum", 2);
+                        context.startActivity(intent);
+                    } else {
+                        Intent i = new Intent(getContext(), ShowBook.class);
+                        i.putExtra("filepath", b.getPath());
+                        context.startActivity(i);
+                    }
+                }
+                else{
+                    Toast.makeText(getContext(), "该书没有被添加到书架中", Toast.LENGTH_SHORT).show();
                 }
             }
         });

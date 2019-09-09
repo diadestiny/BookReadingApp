@@ -90,14 +90,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg_topbar"
-            app:title=" "></android.support.v7.widget.Toolbar>
+            app:title=" "/>
 
         <TextView
+            android:drawableLeft="@mipmap/head"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="书伴"
-            android:textSize="35sp"/>
+            android:layout_centerVertical="true"
+            android:text="悦读"
+            android:textColor="@color/black_de"
+            android:textSize="30sp"
+            />
 
         <View
             android:layout_width="match_parent"

@@ -39,7 +39,7 @@ public class ShowBookInternet extends AppCompatActivity {
         progressDialog.setCancelable(true);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
-        book = BookCity.book;
+        book = ShowBookChapter.tempBook;
         catalog = ShowBookChapter.catalog;
         init();
 

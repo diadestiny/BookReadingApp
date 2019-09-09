@@ -52,7 +52,7 @@ public class BookCity extends Fragment {
         bar = view.findViewById(R.id.progressbar1);
         bar.setVisibility(View.GONE);
         textView = view.findViewById(R.id.textcity);
-        textView.setText("  客官请点击左上角的搜索图标啦~~~");
+        textView.setText("  客官请点击左上角的搜索图标~~~");
         searchView = view.findViewById(R.id.searchView);
         searchView.setQueryHint("请输入你想阅读的书籍");
         recyclerView = view.findViewById(R.id.recycler);
@@ -99,7 +99,7 @@ public class BookCity extends Fragment {
                     @Override
                     public void onConfirmButtonClick() {
                         com.example.bottomtabber.Data.Book book = new com.example.bottomtabber.Data.Book(R.mipmap.zanwu,name,Login.loginUser.getUsername());
-                        if(LitePal.where("user_name=? and name =?", Login.loginUser.getUsername(),name).find(Book.class).isEmpty()){
+                        if(LitePal.where("user_name=? and name =?", Login.loginUser.getUsername(),name).find(com.example.bottomtabber.Data.Book.class).isEmpty()){
                             book.setListNum(Main.lists.size());
                             book.setImageUrl(imageUri);
                             book.save();

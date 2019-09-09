@@ -27,6 +27,7 @@ public class ShowBookChapter extends AppCompatActivity {
 
     private ListView listView;
     private Book book;
+    public static Book tempBook;
     public static Catalog catalog;
     private List<String> strings =new ArrayList<>();
     private ProgressDialog progressDialog;
@@ -43,6 +44,7 @@ public class ShowBookChapter extends AppCompatActivity {
         }else{
             book = BookCity.book;
         }
+        tempBook=book;
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("目录正在全力加载中");
         progressDialog.setMessage("客观请稍等一下下~~");

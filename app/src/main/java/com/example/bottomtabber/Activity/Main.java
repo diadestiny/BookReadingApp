@@ -99,16 +99,16 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
             case R.id.id_list_item:
                  new MaterialDialog.Builder(this)
                     .title("排列方式")
-                    .items(new String[]{"按书籍名称(A-Z)","按入架时间(新-旧)","按阅读次数(大-小)"})
+                    .items(new String[]{"按入架时间(旧-新)","按入架时间(新-旧)","按阅读次数(大-小)"})
                     .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
                         @Override
                         public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
                             PagerAdapter f = viewPager.getAdapter();
                             if(f!=null){
-                                BookSheet_Nine bookSheet_nine= (BookSheet_Nine)f.instantiateItem(viewPager,PAGE_TWO);
+                                BookSheet_Nine bookSheet_nine= (BookSheet_Nine)f.instantiateItem(viewPager,PAGE_THREE);
                                 switch (which){
                                     case 0:
-                                        bookSheet_nine.initData(true,1);
+                                        bookSheet_nine.initData(true,0);
                                         bookSheet_nine.initView();
                                         break;
                                     case 1:
