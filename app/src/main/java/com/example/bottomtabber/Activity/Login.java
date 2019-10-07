@@ -14,6 +14,7 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -26,6 +27,8 @@ import com.example.bottomtabber.R;
 
 import org.litepal.LitePal;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Login extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
@@ -41,6 +44,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
     private SharedPreferences sharedPreferences=null;
     private boolean misChecked = false;
     public static User loginUser;
+    //public static ArrayList<File> putBooks = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Co
         LitePal.initialize(this);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getPermission();
         initUI();
         initData();

@@ -35,7 +35,7 @@ public class ShowBookInternet extends AppCompatActivity {
         textView1.setText(getIntent().getStringExtra("chapter"));
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("内容正在全力加载中");
-        progressDialog.setMessage("客观请稍等一下下~~");
+        progressDialog.setMessage("客官请稍等一下下~~");
         progressDialog.setCancelable(true);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();

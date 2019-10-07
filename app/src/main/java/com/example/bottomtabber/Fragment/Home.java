@@ -1,6 +1,7 @@
 package com.example.bottomtabber.Fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.litepal.LitePal;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -99,11 +101,11 @@ public class Home extends Fragment implements View.OnClickListener {
         line6.setOnClickListener(this);
         exit.setOnClickListener(this);
         avatarImageView.setOnClickListener(this);
+        blurImageView.setOnClickListener(this);
     }
     private void initUIData(){
         Glide.with(this)
-                .load(R.mipmap.boy)
-                .apply(RequestOptions.bitmapTransform(new BlurTransformation(13,3)))
+                .load(R.mipmap.picture)
                 .into(blurImageView);
 
         Glide.with(this)
@@ -127,21 +129,15 @@ public class Home extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void photoAndCamera() {
+    private void photoAndCamera1() {
         PictureSelector
                 .create(Home.this, PictureSelector.SELECT_REQUEST_CODE)
                 .selectPicture(true, 200, 200, 1, 1);
     }
-
-    private void initData(String string){
-        Glide.with(this)
-                .load(string)
-                .apply(RequestOptions.bitmapTransform(new BlurTransformation(13,3)))
-                .into(blurImageView);
-
-        Glide.with(this)
-                .load(string)
-                .into(avatarImageView);
+    private void photoAndCamera2() {
+        PictureSelector
+                .create(Home.this, PictureSelector.SELECT_REQUEST_CODE*2)
+                .selectPicture(true, 200, 100, 1, 1);
     }
 
     private void quitCache(){
@@ -160,7 +156,16 @@ public class Home extends Fragment implements View.OnClickListener {
             if (data != null) {
                 String picturePath = data.getStringExtra(PictureSelector.PICTURE_PATH);
                 quitCache();
-                initData(picturePath);
+                Glide.with(this)
+                        .load(picturePath)
+                        .into(avatarImageView);
+            }
+        }
+        else if(requestCode == PictureSelector.SELECT_REQUEST_CODE*2){
+            if (data != null) {
+                String picturePath = data.getStringExtra(PictureSelector.PICTURE_PATH);
+                quitCache();
+                blurImageView.setImageURI(Uri.fromFile(new File(picturePath)));
             }
         }
     }
@@ -170,7 +175,10 @@ public class Home extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_avatar:
-                photoAndCamera();
+                photoAndCamera1();
+                break;
+            case R.id.iv_blur:
+                photoAndCamera2();
                 break;
             case R.id.bt_exit:
                 if(getActivity()!=null){

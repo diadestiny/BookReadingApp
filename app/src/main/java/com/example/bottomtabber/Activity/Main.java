@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -49,7 +50,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SharedPreferences sp1 = getSharedPreferences("BOOK_LIST", Activity.MODE_PRIVATE);
         String listJson = sp1.getString("KEY_BOOK_DATA","");
         if(!listJson.equals("")){

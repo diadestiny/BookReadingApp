@@ -19,7 +19,7 @@ public class FileUtil {
             return null;
         }
         File[] subFiles = f.listFiles();
-        if(files.size()>50){
+        if(files.size()>35){
             return files;
         }
         if(subFiles == null){
@@ -138,7 +138,6 @@ public class FileUtil {
                 String line = sc.nextLine();
                 content= content+line+"\n";
                 i++;
-                Log.d("lkh",i+"次数");
             }
             content = content.replaceAll("\\n","\n");
             if(sc.ioException() != null) {

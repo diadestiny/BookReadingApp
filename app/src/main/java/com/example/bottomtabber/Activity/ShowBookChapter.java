@@ -47,7 +47,7 @@ public class ShowBookChapter extends AppCompatActivity {
         tempBook=book;
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("目录正在全力加载中");
-        progressDialog.setMessage("客观请稍等一下下~~");
+        progressDialog.setMessage("客官请稍等一下下~~");
         progressDialog.setCancelable(true);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
