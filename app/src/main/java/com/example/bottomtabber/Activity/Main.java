@@ -1,6 +1,7 @@
 package com.example.bottomtabber.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -126,8 +128,31 @@ public class Main extends AppCompatActivity implements View.OnClickListener, Vie
                         }
                     })
                     .show();
-
-
+                break;
+            case R.id.id_chat:
+                new MaterialDialog.Builder(this)
+                        .title("服务器ip设置")
+                        //限制输入的长度
+                        .inputRangeRes(0, 40, R.color.colorPrimary)
+                        //限制输入类型
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .input("请输入您的服务器ip", null, new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                Intent intent1 =new Intent(Main.this,ChatActivity.class);
+                                intent1.putExtra("ip_address",input.toString());
+                                startActivity(intent1);
+                            }
+                        })
+                        .canceledOnTouchOutside(false)
+                        .positiveText("确定")
+                        .show();
+                break;
+            case R.id.id_tensor_lite:
+                Intent intent2 = new Intent(Main.this, Model_Identification.class);
+                startActivity(intent2);
+                break;
+            case R.id.id_fly_keDa:
                 break;
         }
         return super.onOptionsItemSelected(item);

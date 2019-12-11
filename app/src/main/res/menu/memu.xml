@@ -2,5 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/id_list_item" android:title="@string/list"/>
+    <item android:id="@+id/id_chat" android:title="@string/chat"/>
+    <item android:id="@+id/id_tensor_lite" android:title="@string/tensorFlowLite"/>
+    <item android:id="@+id/id_fly_keDa" android:title="@string/flyKeda"/>
 
 </menu>

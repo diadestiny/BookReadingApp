@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ShowBookInternet"></activity>
+        <activity android:name=".Activity.ChatActivity"/>
+        <activity android:name=".Activity.Model_Identification"/>
+        <activity android:name=".Activity.ShowBookInternet" />
         <activity android:name=".Activity.ShowBookChapter" />
         <activity android:name=".Activity.Splash">
             <intent-filter>
@@ -33,6 +35,16 @@
             android:name=".Activity.Main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.Login" />
+        <provider
+            tools:replace="android:authorities"
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.linkaihao.testtflite.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
     </application>
 
 </manifest>
